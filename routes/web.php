@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view
-    ('welcome.template.header').
-    ('welcome.landing_page').
-    ('welcome.template.footer');
-});
+// Route::get('/', function () {
+//     return view
+//     ('welcome.template.header').
+//     ('welcome.landing_page').
+//     ('admin.footer');
+// });
+
+Route::get('/', [DashboardController::class, 'showDashboard']);
