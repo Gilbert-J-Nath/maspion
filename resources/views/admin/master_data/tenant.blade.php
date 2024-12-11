@@ -8,7 +8,7 @@
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item">Tenant</li>
                 </ul>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
-                                    <h3 class="fw-bold" style="color:#45b104">Expertise</h3>
+                                    <h3 class="fw-bold" style="color:#45b104">Tenant</h3>
                                 </div>
                                 <div
                                     class="col-md-6 d-flex justify-content-md-end justify-content-end align-items-center">
@@ -50,27 +50,27 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th style="width: 30%">Image</th>
-                                            <th style="width: 20%">Name</th>
-                                            <th style="width: 30%">Description</th>
-                                            <th style="width: 20%">Status</th>
+                                            <th style="width: 20%">Logo</th>
+                                            <th style="width: 30%">Nama Tenant</th>
+                                            <th style="width: 30%">Deskripsi</th>
+                                            <th style="width: 20%">Nama Owner</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
+                                    <tbody>
                                         <?php $number = 0; ?>
 
-                                        @foreach ($expertise as $item)
+                                        @foreach ($tenant as $item)
                                             <?php $number++; ?>
                                             <tr>
                                                 <td><?= $number ?></td>
                                                 <td>
-                                                    <img src="{{ $item->EXPERTISEIMAGE }}" alt="Profile Image"
+                                                    <img src="{{ $item->logo_tenant }}" alt="Logo Tenant"
                                                         style="width: 80px; height: auto;">
                                                 </td>
-                                                <td>{{ $item->EXPERTISENAME }}</td>
-                                                <td>{{ $item->EXPERTISEDESC }}</td>
-                                                <td>{{ $item->EXPERTISESTATUS }}</td>
+                                                <td>{{ $item->name_tenant }}</td>
+                                                <td>{{ $item->desc_tenant }}</td>
+                                                <td>{{ $item->owner_name }}</td>
                                                 <td>
                                                     <div class="d-flex flex-row gap-2">
                                                         <button type="button"
@@ -87,7 +87,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -104,34 +104,34 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Data Expertise</h5>
+                <h5 class="modal-title">Tambah Data Tenant</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form-user" action="<?= url('dashboard-admin/expertise/store') ?>" method="POST" enctype="multipart/form-data">
+            <form id="form-tenant" action="<?= url('dashboard-admin/tenant/store') ?>" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label>Gambar<span class="text-danger">*</span></label>
+                        <label>Logo Tenant<span class="text-danger">*</span></label>
                         <div class="col-md-12">
                             <div class="custom-file">
-                                <input type="file" name="expertise_image" class="custom-file-input dropify" style="font-size: 10px;"
+                                <input type="file" name="tenant_logo" class="custom-file-input dropify" style="font-size: 10px;"
                                     accept=".jpg, .png, .jpeg" data-allowed-file-extensions="jpg png jpeg" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label>Name<span class="text-danger">*</span></label>
-                        <input placeholder="name" type="text" name="expertise_name" class="form-control" required>
+                        <label>Nama Tenant<span class="text-danger">*</span></label>
+                        <input placeholder="name" type="text" name="tenant_name" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label>Description<span class="text-danger">*</span></label>
-                        <input placeholder="name" type="text" name="expertise_desc" class="form-control" required>
+                        <label>Deskripsi<span class="text-danger">*</span></label>
+                        <input placeholder="desc" type="text" name="tenant_desc" class="form-control" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label>Status<span class="text-danger">*</span></label>
-                        <input placeholder="Status" type="text" name="expertise_status" class="form-control"
+                        <label>Nama Owner<span class="text-danger">*</span></label>
+                        <input placeholder="owner" type="text" name="owner_name" class="form-control"
                             required>
                     </div>
                 </div>
