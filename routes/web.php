@@ -21,4 +21,8 @@ use App\Http\Controllers\DashboardController;
 //     ('admin.footer');
 // });
 
-Route::get('/', [DashboardController::class, 'showDashboard']);
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard-admin/tenant', [DashboardController::class, 'index_tenant']);
+Route::post('/dashboard-admin/tenant/store', [DashboardController::class, 'store_tenant']);
+Route::post('/dashboard-admin/tenant/update', [DashboardController::class, 'update_tenant']);
+Route::post('/dashboard-admin/tenant/delete', [DashboardController::class, 'delete_tenant']);

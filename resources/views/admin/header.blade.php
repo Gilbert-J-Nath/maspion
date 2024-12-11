@@ -62,9 +62,9 @@
                         <label>Navigation</label>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ url('dashboard-admin/expertise') }}" class="nxl-link">
+                        <a href="/" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
-                            <span class="nxl-mtext">About Us</span><span class="nxl-arrow"><i
+                            <span class="nxl-mtext">Dashboard</span><span class="nxl-arrow"><i
                                     class="feather-chevron-right"></i></span>
                         </a>
                     </li>
@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ url('dashboard-admin/carousel') }}" class="nxl-link">
+                        <a href="{{ url('dashboard-admin/tenant') }}" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Tenant</span><span class="nxl-arrow"><i
                                     class="feather-chevron-right"></i></span>
