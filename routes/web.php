@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::get('/dashboard-admin/tenant', [DashboardController::class, 'index_tenant
 Route::post('/dashboard-admin/tenant/store', [DashboardController::class, 'store_tenant']);
 Route::post('/dashboard-admin/tenant/update', [DashboardController::class, 'update_tenant']);
 Route::post('/dashboard-admin/tenant/delete', [DashboardController::class, 'delete_tenant']);
+
+Route::get('home', [HomeController::class, 'index']);
