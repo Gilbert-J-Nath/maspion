@@ -149,26 +149,26 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Detail Expertise</h5>
+                <h5 class="modal-title">Detail Tenant</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form-user" action="{{ url ('dashboard-admin/expertise/update') }}" method="POST" enctype="multipart/form-data">
+            <form id="form-tenant" action="{{ url ('dashboard-admin/tenant/update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <input type="hidden" name="up_id_expertise" value="" readonly>
-                    <label>Gambar</label>
+                    <input type="hidden" name="up_id_tenant" value="" readonly>
+                    <label>Logo Tenant</label>
                     <div class="custom-file">
-                        <input type="file" name="up_image_background" class="custom-file-input dropify"
+                        <input type="file" name="up_tenant_logo" class="custom-file-input dropify"
                             accept=".jpg, .png, .jpeg" data-allowed-file-extensions="jpg png jpeg">
                     </div>
-                    <label>Name<span class="text-danger">*</span></label>
-                    <input placeholder="name" type="text" name="expertise_name" class="form-control" required>
-                    <label>Description<span class="text-danger">*</span></label>
-                    <input placeholder="name" type="text" name="expertise_desc" class="form-control" required>
-                    <label>Status<span class="text-danger">*</span></label>
-                    <input placeholder="status" type="text" name="expertise_status" class="form-control"
+                    <label>Nama Tenant<span class="text-danger">*</span></label>
+                    <input placeholder="name" type="text" name="up_tenant_name" class="form-control" required>
+                    <label>Deskripsi<span class="text-danger">*</span></label>
+                    <input placeholder="desc" type="text" name="up_tenant_desc" class="form-control" required>
+                    <label>Nama Owner<span class="text-danger">*</span></label>
+                    <input placeholder="owner" type="text" name="up_owner_name" class="form-control"
                         required>
                 </div>
 
@@ -192,11 +192,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form-user" action="{{ url ('dashboard-admin/expertise/delete') }}" method="POST" enctype="multipart/form-data">
+            <form id="form-tenant" action="{{ url ('dashboard-admin/tenant/delete') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <p>Apakah kamu ingin menghapus data ini?</p>
-                    <input type="hidden" name="del_id_expertise" value="" readonly>
+                    <input type="hidden" name="del_id_tenant" value="" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Hapus</button>
@@ -209,7 +209,6 @@
 
 <script>
 new DataTable('#example');
-    // $('#dtTable').DataTable()
 
     function openaddModal() {
         $('#addModal').modal('show')
@@ -218,25 +217,25 @@ new DataTable('#example');
     function openviewModal(viewData) {
         var data = JSON.parse(viewData)
 
-        var profile_image = $('input[name="up_image_background"]').dropify();
-        profile_image = profile_image.data('dropify');
-        profile_image.resetPreview();
-        profile_image.clearElement();
-        profile_image.settings['defaultFile'] = data.EXPERTISEIMAGE;
-        profile_image.destroy();
-        profile_image.init();
+        var logo_tenant = $('input[name="up_tenant_logo"]').dropify();
+        logo_tenant = logo_tenant.data('dropify');
+        logo_tenant.resetPreview();
+        logo_tenant.clearElement();
+        logo_tenant.settings['defaultFile'] = data.logo_tenant;
+        logo_tenant.destroy();
+        logo_tenant.init();
 
-        $('input[name="expertise_name"]').val(data.EXPERTISENAME)
-        $('input[name="expertise_desc"]').val(data.EXPERTISEDESC)
-        $('input[name="expertise_status"]').val(data.EXPERTISESTATUS)
-        $('input[name="up_id_expertise"]').val(data.EXPERTISEID)
+        $('input[name="up_tenant_name"]').val(data.name_tenant)
+        $('input[name="up_tenant_desc"]').val(data.desc_tenant)
+        $('input[name="up_owner_name"]').val(data.owner_name)
+        $('input[name="up_id_tenant"]').val(data.id_tenant)
 
         $('#updateModal').modal('show')
     }
 
     function opendeleteModal(viewData) {
         var data = JSON.parse(viewData)
-        $('input[name="del_id_expertise"]').val(data.EXPERTISEID)
+        $('input[name="del_id_tenant"]').val(data.id_tenant)
         $('#deleteModal').modal('show')
     }
 

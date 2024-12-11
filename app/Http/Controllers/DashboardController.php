@@ -61,13 +61,32 @@ class DashboardController extends Controller
         return redirect('dashboard-admin/tenant')->with(['msg' => 'Berhasil Menambahkan Data Tenant', 'location' => 'tenant']);
     }
 
-    // public function update_tenant(Request $req)
-    // {
+    public function update_tenant(Request $req)
+    {
+        $req->validate([
+            'up_tenant_logo' => 'nullable|mimes:jpg,png,jpeg|max:2048'
+        ]);
 
-    // }
+        $data = [
+            'name_tenant'  => $req->input('up_tenant_name'),
+            'desc_tenant' => $req->input('up_tenant_desc'),
+            'owner_name' => $req->input('up_owner_name'),
+            'updated_at' => now()   
+        ];
 
-    // public function delete_tenant(Request $req)
-    // {
+        if (!empty($req->file('up_tenant_logo'))) {
+            $data['logo_tenant'] = FileUpload::S3($req->file('up_tenant_logo'), 'Image', 'Tenant-logo-' . strtotime(now()));
+        }
 
-    // }
+        Tenants::where('id_tenant', $req->input('up_id_tenant'))->update($data);
+
+        return redirect('dashboard-admin/tenant')->with(['msg' => 'Berhasil Mengubah Data Tenant', 'location' => 'tenant']);
+    }
+
+    public function delete_tenant(Request $req)
+    {
+        DB::table('tenant')->WHERE(['id_tenant' => $req->input('del_id_tenant')])->delete();
+
+        return redirect('dashboard-admin/tenant')->with(['msg' => 'Berhasil Menghapus Tenant', 'location' => 'tenant']);
+    }
 }
