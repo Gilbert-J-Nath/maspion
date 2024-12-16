@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,8 @@ use App\Http\Controllers\HomeController;
 //     ('welcome.landing_page').
 //     ('admin.footer');
 // });
+
+Route::get('/login', [AuthController::class, 'index_login']);
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/dashboard-admin/tenant', [DashboardController::class, 'index_tenant']);
